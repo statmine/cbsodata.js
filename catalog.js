@@ -8,7 +8,7 @@
 
   CATALOG = "http://opendata.cbs.nl/ODataCatalog";
 
-  get_filter = require("utils").get_filter;
+  get_filter = require("./utils").get_filter;
 
   cb = require("./utils").cb;
 
