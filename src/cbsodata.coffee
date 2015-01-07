@@ -125,13 +125,42 @@ get_themes = (filter, callback=cb) ->
 			data = (JSON.parse data).value
 			callback(null, data)
 
+get_featured = (filter, callback=cb) ->
+	url = "#{CATALOG}/Featured?$format=json"
+	url += get_filter filter
+	console.log url
+	http.get url, (res) ->
+		res.setEncoding('utf8')
+		data = ""
+		res.on "data", (chunk) ->
+			data += chunk
+		res.on "end", () ->
+			data = (JSON.parse data).value
+			callback(null, data)
+
+get_table_featured = (filter, callback=cb) ->
+	url = "#{CATALOG}/Table_Featured?$format=json"
+	url += get_filter filter
+	console.log url
+	http.get url, (res) ->
+		res.setEncoding('utf8')
+		data = ""
+		res.on "data", (chunk) ->
+			data += chunk
+		res.on "end", () ->
+			data = (JSON.parse data).value
+			callback(null, data)
+
 module.exports = 
 	get_meta: get_meta
 	get_data: get_data
 	get_tables: get_tables
 	get_themes: get_themes
+	get_table_featured: get_table_featured
+	get_featured: get_featured
 
 ### Testing
+
 get_meta("81251ned")
 get_data("81251ned", [] 
 	{Perioden: ['2010MM12','2011MM12'], WoonregioS:['NL10  ']},
@@ -139,4 +168,7 @@ get_data("81251ned", []
 
 get_tables({Language:'en'})
 get_themes({Language: 'en'})
+get_table_featured()
+
 ###
+
