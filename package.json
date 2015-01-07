@@ -1,0 +1,17 @@
+{
+  "name": "cbsodata",
+  "version": "0.0.1",
+  "description": "Retrive data from the Open Data API of Statistics Netherlands (CBS)",
+  "main": "cbsodata.js",
+  "scripts": {
+    "build": "coffee -c -o . ./src"
+  },
+  "author": "Edwin de Jonge",
+  "license": "ISC",
+  "dependencies": {
+    "queue-async": "^1.0.7"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.8.0"
+  }
+}
