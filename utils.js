@@ -12,7 +12,10 @@
     if (error) {
       console.log(error, results);
     }
-    if (results.length) {
+    if (typeof results === 'object') {
+      console.log(results);
+    }
+    if (results.length > 1) {
       console.log("Length: " + results.length);
       console.log("First item:");
       return console.log(results[0]);
