@@ -10,7 +10,7 @@
 
   get_filter = require("utils").get_filter;
 
-  cb = require("utils").cb;
+  cb = require("./utils").cb;
 
   get_tables = function(filter, callback) {
     var url;

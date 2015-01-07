@@ -3,6 +3,7 @@ queue = require "queue-async"
 
 cb = require("./utils").cb
 get_filter = require("./utils").get_filter
+get_select = require("./utils").get_select
 get_part = require("./utils").get_part
      
 BULK = "http://opendata.cbs.nl/ODataFeed/odata"

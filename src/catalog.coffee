@@ -4,7 +4,7 @@ utils = require("./utils")
 CATALOG = "http://opendata.cbs.nl/ODataCatalog"
 
 get_filter = require("utils").get_filter
-cb = require("utils").cb
+cb = require("./utils").cb
 
 get_tables = (filter, callback=cb) ->
 	url = "#{CATALOG}/Tables?$format=json"
