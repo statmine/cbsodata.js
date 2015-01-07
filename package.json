@@ -2,7 +2,7 @@
   "name": "cbsodata",
   "version": "0.0.1",
   "description": "Retrive data from the Open Data API of Statistics Netherlands (CBS)",
-  "main": "cbsodata.js",
+  "main": "index.js",
   "scripts": {
     "build": "coffee -c -o . ./src"
   },
