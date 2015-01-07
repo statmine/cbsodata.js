@@ -1,10 +1,10 @@
 # CBS OData
 
-Interface to CBS opendata.
+Interface to CBS opendata. All data from the StatLine database of Statistics Netherlands can be retrieved.
 
 ## Usage
 
-### Catalog, retrieving tables and themes
+### Catalog: retrieving tables and themes
 
 ```js
 var catalog = require("cbsodata").catalog;
@@ -23,12 +23,12 @@ catalog.get_themes( {Language: 'en'} // filter on english themes
 
 ```
 
-### Api, Get metadata and data from table
+### Api: Get metadata and data from table
 
 ```js
 var api = require("cbsodata").api;
 
-// retrieve metadata of table " 81251ned" asynchronously
+// retrieve metadata of table "81251ned" asynchronously
 api.get_meta("81251ned", function(error, metadata){
        // do your thing with the meta data
     });
@@ -36,18 +36,18 @@ api.get_meta("81251ned", function(error, metadata){
 //Note that at most 10 000 records can be retrieve with api
 api.get_data( "81251ned"
             , null // array with columns to select, null is all columns
-            , {Perioden: ['2009MM12']} // filter rows
+            , {Perioden: ['2009MM12']} // filter rows on values of columns
             , function(error, data){
                 // do your thing with the data
             }
             )
 ```
 
-### Bulk, Get metadata and bulk data download
+### Bulk: Get metadata and bulk data download
 ```js
 var bulk = require("cbsodata").bulk;
 
-// retrieve metadata of table " 81251ned" asynchronously
+// retrieve metadata of table "81251ned" asynchronously
 bulk.get_meta("81251ned", function(error, metadata){
        // do your thing with the meta data
     });
