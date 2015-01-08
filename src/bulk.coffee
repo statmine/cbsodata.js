@@ -1,8 +1,5 @@
 http = require "http"
 Promise = require "promise"
-
-get_filter = require("./utils").get_filter
-get_select = require("./utils").get_select
 read_odata = require("./utils").read_odata
      
 BULK = "http://opendata.cbs.nl/ODataFeed/odata"
@@ -38,6 +35,6 @@ module.exports =
 
 ### Testing
 get_meta("81251ned", console.log)
-###
 get_data("81251ned",{Perioden: ['2010MM12','2011MM12'], WoonregioS:['NL10  ']}).
 then( (results) -> console.log results[0], results.length)
+###
