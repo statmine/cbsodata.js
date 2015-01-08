@@ -4,12 +4,14 @@
   "description": "Retrive data from the Open Data API of Statistics Netherlands (CBS)",
   "main": "index.js",
   "scripts": {
-    "build": "coffee -c -o . ./src"
+    "build": "coffee -c -o . ./src",
+    "watch": "coffee -w  ./src"
   },
   "author": "Edwin de Jonge",
   "license": "ISC",
   "dependencies": {
-    "queue-async": "^1.0.7"
+    "queue-async": "^1.0.7",
+    "promise": "^6.0.1"
   },
   "devDependencies": {
     "coffee-script": "^1.8.0"

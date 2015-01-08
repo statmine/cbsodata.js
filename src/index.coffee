@@ -4,9 +4,7 @@ module.exports =
 	catalog: require "./catalog"
 
 
-###
-api = require "./api"
+###api = require "./api"
 catalog = require "./catalog"
 api.get_meta "81251ned"
-#catalog.get_tables {Language: 'nl'}
-###
+####catalog.get_tables {Language: 'nl'}

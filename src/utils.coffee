@@ -1,28 +1,21 @@
 http = require "http"
+Promise = require "promise"
 
-id = (id) -> id
-# default callback function
-cb = (error, results) ->
-	if error then console.log error, results
-	if typeof results is 'object' then console.log results
-	if results.length > 1
-		console.log "Length: #{results.length}"
-		console.log "First item:"
-		console.log results[0]
-
-get_part = (options, store, next) ->
-	console.log "Getting '#{options.url}'..."
-	http.get options.url, (res) ->
-		res.setEncoding('utf8')
-
-		metadata = ""
-		res.on "data", (chunk) ->
-			metadata += chunk
-		
-		res.on "end", () ->
-			metadata = (JSON.parse metadata).value
-			store[options.name] = metadata
-			next(null, metadata)
+read_odata = (url, filter, select) ->
+	url += "?$format=json"
+	url += get_filter filter
+	url += get_select select
+	promise = new Promise((resolve, reject) ->
+		http.get url, (res) ->
+			json = ""
+			res.setEncoding "utf8"
+			res.on "data", (chunk) ->
+				json += chunk
+			res.on "end", () ->
+				data = (JSON.parse json).value
+				resolve data
+			res.on "error", reject
+	)
 
 ###
 Create filter and select query
@@ -44,13 +37,11 @@ get_filter = (filter) ->
 
 get_select = (select) ->
 	return "" if not select or select.length is 0
+	select = [select] if typeof select is 'string'
 	"&$select=" + select.join ","
 
 module.exports = 
-	get_filter: get_filter
-	get_select: get_select
-	get_part: get_part
-	cb: cb
+	read_odata: read_odata
 
 ### Testing
 
