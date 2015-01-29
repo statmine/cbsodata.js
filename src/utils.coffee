@@ -12,6 +12,11 @@ read_odata = (url, filter, select) ->
 			res.on "data", (chunk) ->
 				json += chunk
 			res.on "end", () ->
+				#console.log res.statusCode
+				if res.statusCode > 202
+					reject(json)
+					return
+				#console.log "hi", json
 				data = (JSON.parse json).value
 				resolve data
 			res.on "error", reject
