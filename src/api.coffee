@@ -37,7 +37,7 @@ module.exports =
 	get_data: get_data
 
 
-get_meta("70636eng").then(console.log).catch(console.log)
+#get_meta("70636eng").then(console.log).catch(console.log)
 #get_meta("81251ned", console.log)
 ### Testing
 get_meta("81251ned", console.log)
