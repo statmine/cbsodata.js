@@ -26,6 +26,10 @@
         });
         res.on("end", function() {
           var data;
+          if (res.statusCode > 202) {
+            reject(json);
+            return;
+          }
           data = (JSON.parse(json)).value;
           return resolve(data);
         });
