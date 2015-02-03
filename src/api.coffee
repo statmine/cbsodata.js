@@ -1,6 +1,5 @@
 http = require "http"
 Promise = require "promise"
-
 read_odata = require("./utils").read_odata
      
 API = "http://opendata.cbs.nl/ODataApi/odata"
@@ -35,6 +34,7 @@ get_data = (table, filter, select, callback) ->
 module.exports = 
 	get_meta: get_meta
 	get_data: get_data
+
 
 ### Testing
 get_meta("81251ned", console.log)

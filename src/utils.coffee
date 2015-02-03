@@ -1,4 +1,5 @@
 http = require "http"
+parse_url = (require "url").parse
 Promise = require "promise"
 
 read_odata = (url, filter, select) ->
@@ -6,7 +7,10 @@ read_odata = (url, filter, select) ->
 	url += get_filter filter
 	url += get_select select
 	promise = new Promise((resolve, reject) ->
-		http.get url, (res) ->
+		options = parse_url url
+		# enable CORS
+		options.withCredentials = false
+		http.get options, (res) ->
 			json = ""
 			res.setEncoding "utf8"
 			res.on "data", (chunk) ->
@@ -18,7 +22,7 @@ read_odata = (url, filter, select) ->
 	)
 
 ###
-Create filter and select query
+Create filter
 ###
 get_column_filter = (column, filter) ->
 	return "" if not filter or filter.length is 0
