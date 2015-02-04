@@ -10,7 +10,7 @@ read_odata = (url, filter, select) ->
 		options = parse_url url
 		# enable CORS
 		options.withCredentials = false
-		http.get options, (res) ->
+		http.request options, (res) ->
 			json = ""
 			res.setEncoding "utf8"
 			res.on "data", (chunk) ->
@@ -24,6 +24,7 @@ read_odata = (url, filter, select) ->
 				data = (JSON.parse json).value
 				resolve data
 			res.on "error", reject
+		@
 	)
 
 ###

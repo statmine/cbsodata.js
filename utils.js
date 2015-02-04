@@ -17,7 +17,7 @@
       var options;
       options = parse_url(url);
       options.withCredentials = false;
-      return http.get(options, function(res) {
+      http.request(options, function(res) {
         var json;
         json = "";
         res.setEncoding("utf8");
@@ -35,6 +35,7 @@
         });
         return res.on("error", reject);
       });
+      return this;
     });
   };
 
