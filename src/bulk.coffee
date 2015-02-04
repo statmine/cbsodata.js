@@ -1,4 +1,3 @@
-http = require "http"
 Promise = require "promise"
 read_odata = require("./utils").read_odata
      

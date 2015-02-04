@@ -10,7 +10,8 @@
   "author": "Edwin de Jonge",
   "license": "ISC",
   "dependencies": {
-    "promise": "^6.0.1"
+    "promise": "^6.0.1",
+    "request": "^2.53.0"
   },
   "devDependencies": {
     "coffee-script": "^1.8.0"

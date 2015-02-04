@@ -1,4 +1,4 @@
-http = require "http"
+request = require "request"
 parse_url = (require "url").parse
 Promise = require "promise"
 
@@ -7,25 +7,18 @@ read_odata = (url, filter, select) ->
 	url += get_filter filter
 	url += get_select select
 	promise = new Promise((resolve, reject) ->
-		options = parse_url url
-		# enable CORS
-		options.withCredentials = false
-		http.request options, (res) ->
-			json = ""
-			res.setEncoding "utf8"
-			res.on "data", (chunk) ->
-				json += chunk
-			res.on "end", () ->
-				#console.log res.statusCode
-				if res.statusCode > 202
-					reject(json)
-					return
-				#console.log "hi", json
-				data = (JSON.parse json).value
+		request(url, (error, req, body) ->
+			#console.log body
+			#console.log req.statusCode
+			#console.log error
+			if not error and req.statusCode is 200 
+				data = (JSON.parse body).value
 				resolve data
-			res.on "error", reject
-		@
+			else 
+				reject error or body
+		)
 	)
+	promise
 
 ###
 Create filter
@@ -52,6 +45,7 @@ get_select = (select) ->
 
 module.exports = 
 	read_odata: read_odata
+
 
 ### Testing
 

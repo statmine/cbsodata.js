@@ -1,4 +1,3 @@
-http = require "http"
 utils = require("./utils")
 Promise = require("promise")
 
