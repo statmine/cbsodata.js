@@ -58,6 +58,7 @@ module.exports =
 
 
 ### Testing
+get_meta("81251ned", console.log)
 #get_meta("70636eng").then(console.log).catch(console.log)
 get_data("81251ned", 
 	{Perioden: ['2010MM12','2011MM12'], WoonregioS:['NL10  ']}).then((results) -> console.log results[0], results.length)
