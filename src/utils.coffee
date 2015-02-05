@@ -8,7 +8,7 @@ read_odata = (url, filter, select) ->
 	url += get_select select
 	promise = new Promise((resolve, reject) ->
 		options = url: url, withCredentials: false, addXDR: true
-		request(url, (error, req, body) ->
+		request(options, (error, req, body) ->
 			#console.log body
 			#console.log req.statusCode
 			#console.log error
