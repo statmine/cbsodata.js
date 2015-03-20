@@ -1,11 +1,15 @@
 {
   "name": "cbsodata",
   "version": "0.0.6",
-  "description": "Retrive data from the Open Data API of Statistics Netherlands (CBS)",
+  "description": "Retrieve data from the Open Data API of Statistics Netherlands (CBS)",
   "main": "index.js",
   "scripts": {
     "build": "coffee -c -o . ./src",
     "watch": "coffee -w  ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:edwindj/cbsodata.js"
   },
   "author": "Edwin de Jonge",
   "license": "ISC",
