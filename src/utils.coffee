@@ -1,4 +1,4 @@
-request = require "request"
+request = require "superagent"
 parse_url = (require "url").parse
 Promise = require "promise"
 
@@ -6,18 +6,24 @@ read_odata = (url, filter, select) ->
 	url += "?$format=json"
 	url += get_filter filter
 	url += get_select select
+	console.log "******checking 0..."
 	promise = new Promise((resolve, reject) ->
-		options = url: url, withCredentials: false, addXDR: true
-		request(options, (error, req, body) ->
-			#console.log body
-			#console.log req.statusCode
-			#console.log error
-			if not error and req.statusCode is 200 
-				data = (JSON.parse body).value
+	    console.log "******checking 1..."
+		#console.log "Resolve:", resolve
+		console.log "Reject:", reject
+		#resolver = resolve
+		req = request
+		  .get(url)
+		  .withCredentials()
+		  .end((error, res) ->
+			#console.log "Result:", res
+			console.log error
+			if not error and res.ok 
+				data = res.body.value #(JSON.parse body).value
 				resolve data
 			else 
-				reject error or body
-		)
+				reject error or res.text)
+		null
 	)
 	promise
 
@@ -46,7 +52,6 @@ get_select = (select) ->
 
 module.exports = 
 	read_odata: read_odata
-
 
 ### Testing
 
