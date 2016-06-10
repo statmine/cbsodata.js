@@ -6,26 +6,18 @@ read_odata = (url, filter, select) ->
 	url += "?$format=json"
 	url += get_filter filter
 	url += get_select select
-	console.log "******checking 0..."
-	promise = new Promise((resolve, reject) ->
-	    console.log "******checking 1..."
-		#console.log "Resolve:", resolve
-		console.log "Reject:", reject
-		#resolver = resolve
+	promise_cb = (resolve, reject) ->
 		req = request
 		  .get(url)
 		  .withCredentials()
 		  .end((error, res) ->
-			#console.log "Result:", res
-			console.log error
+			#console.log error
 			if not error and res.ok 
 				data = res.body.value #(JSON.parse body).value
 				resolve data
 			else 
 				reject error or res.text)
-		null
-	)
-	promise
+	new Promise(promise_cb)
 
 ###
 Create filter
