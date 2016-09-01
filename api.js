@@ -92,8 +92,6 @@
     get_data: get_data
   };
 
-  get_meta("81251ned", console.log);
-
 
   /* Testing
   get_meta("81251ned", console.log)
