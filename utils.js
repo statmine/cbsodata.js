@@ -15,7 +15,7 @@
     url += get_select(select);
     promise_cb = function(resolve, reject) {
       var req;
-      return req = request.get(url).withCredentials().end(function(error, res) {
+      return req = request.get(url).withCredentials(true).end(function(error, res) {
         var data;
         if (!error && res.ok) {
           data = res.body.value;
