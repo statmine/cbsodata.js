@@ -8,7 +8,6 @@ read_odata = (url, filter, select) ->
 	url += get_select select
 	promise_cb = (resolve, reject) ->
 		req = request
-		  .withCredentials()
 		  .get(url)
 		  .end((error, res) ->
 			#console.log error
