@@ -1,7 +1,7 @@
 Promise = require "promise"
 read_odata = require("./utils").read_odata
      
-API = "http://opendata.cbs.nl/ODataApi/odata"
+API = "https://opendata.cbs.nl/ODataApi/odata"
 
 get_meta = (table, callback) ->
 	store = {}
