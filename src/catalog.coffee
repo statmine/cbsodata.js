@@ -1,7 +1,7 @@
 utils = require("./utils")
 Promise = require("promise")
 
-CATALOG = "http://opendata.cbs.nl/ODataCatalog"
+CATALOG = "https://opendata.cbs.nl/ODataCatalog"
 
 read_odata = require("./utils").read_odata
 
