@@ -6,7 +6,7 @@
 
   read_odata = require("./utils").read_odata;
 
-  BULK = "http://opendata.cbs.nl/ODataFeed/odata";
+  BULK = "https://opendata.cbs.nl/ODataFeed/odata";
 
   get_meta = function(table, callback) {
     var keys, store, url;
